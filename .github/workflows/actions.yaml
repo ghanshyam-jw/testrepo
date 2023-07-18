@@ -8,6 +8,7 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags') # <-- Notice that I'm filtering here to only run when a tagged commit is pushed
 
     steps:
       - name: Checkout code
@@ -19,5 +20,16 @@ jobs:
           version: "latest"
         env:
           CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Login to Artifact Registry
+        uses: docker/login-action@v1
+        with:
+          registry: asia-south1-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+
+      - name: Get tag
+        id: get-tag
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
       # Your remaining build and publish steps here
