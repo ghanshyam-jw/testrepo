@@ -21,9 +21,15 @@ jobs:
         uses: google-github-actions/auth@v0
         with:
           token_format: access_token
-          workload_identity_provider: github
+          audience: //iam.googleapis.com/projects/717093964588/locations/global/workloadIdentityPools/github-actions
           service_account: github-actions@justwravel-production.iam.gserviceaccount.com
           access_token_lifetime: 300s
+          create_credentials_file: true
+          export_environment_variables: true
+          cleanup_credentials: true
+          access_token_scopes: https://www.googleapis.com/auth/cloud-platform
+          retries: 0
+          id_token_include_email: false
 
       - name: Login to Artifact Registry
         uses: docker/login-action@v1
