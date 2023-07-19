@@ -24,6 +24,7 @@ jobs:
         run: |
           # Set up your Docker configuration and authenticate with Artifact Registry
           gcloud auth configure-docker asia-south1-docker.pkg.dev --quiet
+          gcloud artifacts locations list
       # - name: Configure Docker
       #   run: |
       #     # Set up your Docker configuration here
