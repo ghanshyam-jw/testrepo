@@ -22,7 +22,8 @@ jobs:
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v0.5.0
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          workload_identity_provider: "717093964588/locations/global/workloadIdentityPools/github-actions/providers/github "
+          service_account: "jw-github-workflow@justwravel-production.iam.gserviceaccount.com"
 
       - name: Configure Docker and authenticate with Artifact Registry
         run: |
