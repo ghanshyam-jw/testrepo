@@ -19,12 +19,15 @@ jobs:
           version: "latest"
         env:
           CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: ${{ secrets.GCP_SA_KEY }}
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v0.5.0
+        with:
+          credentials: ${{ secrets.GCP_SA_KEY }}
 
       - name: Configure Docker and authenticate with Artifact Registry
         run: |
           # Set up your Docker configuration and authenticate with Artifact Registry
           gcloud auth configure-docker asia-south1-docker.pkg.dev --quiet
-          gcloud artifacts locations list
       # - name: Configure Docker
       #   run: |
       #     # Set up your Docker configuration here
