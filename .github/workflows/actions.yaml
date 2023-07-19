@@ -24,16 +24,16 @@ jobs:
         run: |
           # Set up your Docker configuration and authenticate with Artifact Registry
           gcloud auth configure-docker asia-south1-docker.pkg.dev --quiet
-      - name: Configure Docker
-        run: |
-          # Set up your Docker configuration here
-          # For example, you might install Docker and authenticate with Artifact Registry:
-          docker login -u _json_key -p "$(cat $CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE)" https://asia-south1-docker.pkg.dev/justwravel-production --quiet
-
-      # - name: Build and push Docker image
+      # - name: Configure Docker
       #   run: |
-      #     # Replace "REGION", "PROJECT_ID", "your-image-name", and "your-image-tag" with appropriate values
-      #     docker build -t asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass:latest .
-      #     docker push asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass:latest
+      #     # Set up your Docker configuration here
+      #     # For example, you might install Docker and authenticate with Artifact Registry:
+      #     docker login -u _json_key -p "$(cat $CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE)" https://asia-south1-docker.pkg.dev/justwravel-production --quiet
+
+      - name: Build and push Docker image
+        run: |
+          # Replace "REGION", "PROJECT_ID", "your-image-name", and "your-image-tag" with appropriate values
+          docker build -t asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:latest .
+          docker push asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:latest
 
       # Your remaining build and publish steps here
