@@ -28,7 +28,7 @@ jobs:
         run: |
           # Set up your Docker configuration here
           # For example, you might install Docker and authenticate with Artifact Registry:
-          docker login -u _json_key -p "$(cat $CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE)" https://asia-south1-docker.pkg.dev/justwravel-production
+          docker login -u _json_key -p "$(cat $CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE)" https://asia-south1-docker.pkg.dev/justwravel-production --quit
 
       # - name: Build and push Docker image
       #   run: |
