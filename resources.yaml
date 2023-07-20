@@ -35,3 +35,7 @@ spec:
       containers:
         - name: test-repo-app
           image: asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always # Set the image pull policy here
+
