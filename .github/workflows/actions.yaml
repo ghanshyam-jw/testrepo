@@ -48,7 +48,7 @@ jobs:
         with:
           push: true
           tags: |
-            asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:${{ steps.get-tag.outputs.tag }}
+            asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:${{ env.tag }}
             asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:latest
 
       - name: deploy to gke
