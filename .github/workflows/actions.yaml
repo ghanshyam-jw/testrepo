@@ -18,12 +18,12 @@ jobs:
         with:
           version: "latest"
         env:
-          CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: ${{ secrets.GCP_SA_KEY }}
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v0.5.0
+          CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: ${{ secrets.GCP_SERVICE_KEY }}
+      # authenticating with Gcloud example
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
         with:
-          workload_identity_provider: "717093964588/locations/global/workloadIdentityPools/github-actions/providers/github "
-          service_account: "jw-github-workflow@justwravel-production.iam.gserviceaccount.com"
+          credentials_json: ${{ secrets.GCP_SERVICE_KEY }}
 
       - name: Configure Docker and authenticate with Artifact Registry
         run: |
