@@ -40,7 +40,7 @@ jobs:
 
       - name: Get tag
         id: get-tag
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
+        run: echo "{tag}={${GITHUB_REF#refs/tags/}}" >> $GITHUB_OUTPUT
 
       - id: docker-push-tagged
         name: Tag Docker image and push to Google Artifact Registry
