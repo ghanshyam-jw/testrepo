@@ -39,3 +39,10 @@ jobs:
           tags: |
             asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:${{ steps.get-tag.outputs.short_ref }}
             asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:latest
+
+      - name: deploy to gke
+        env:
+          GOOGLE_PROJECT: "justwravel-production"
+        run: |
+          gcloud container clusters get-credentials autopilot-cluster-1 --region asia-south1 --project justwravel-production
+          kubectl apply -f resources.yaml

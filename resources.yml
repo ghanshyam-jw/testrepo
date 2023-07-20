@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-repo-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: test-repo-app
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-repo-app
+  labels:
+    app: test-repo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-repo-app
+  template:
+    metadata:
+      labels:
+        app: test-repo-app
+    spec:
+      containers:
+        - name: test-repo-app
+          image: asia-south1-docker.pkg.dev/justwravel-production/justwravel-test-pass/justwravel-test-pass:latest
