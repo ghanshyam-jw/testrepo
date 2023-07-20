@@ -1,4 +1,4 @@
 <?php
-echo "Welcome Test repo PHP | version 1.0.1";
+echo "Welcome Test repo PHP | version 1.0.2";
 echo '<hr>';
 // phpinfo();
