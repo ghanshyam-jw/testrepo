@@ -22,12 +22,10 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SERVICE_KEY }}
 
-      - name: Login to Artifact Registry
-        uses: docker/login-action@v1
-        with:
-          registry: asia-south1-docker.pkg.dev
-          username: oauth2accesstoken
-          password: ${{ steps.auth.outputs.access_token }}
+      - name: Configure Docker and authenticate with Artifact Registry
+        run: |
+          # Set up your Docker configuration and authenticate with Artifact Registry
+          gcloud auth configure-docker asia-south1-docker.pkg.dev --quiet
 
       - name: Get tag
         id: get-tag
