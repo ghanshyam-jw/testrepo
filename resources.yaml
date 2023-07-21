@@ -38,4 +38,6 @@ spec:
           ports:
             - containerPort: 80
           imagePullPolicy: Always # Set the image pull policy here
-
+          env:
+            - name: FOR_GODS_SAKE_PLEASE_REDEPLOY
+              value: "THIS_STRING_IS_REPLACED_DURING_BUILD"

@@ -56,4 +56,5 @@ jobs:
           GOOGLE_PROJECT: "justwravel-production"
         run: |
           gcloud container clusters get-credentials autopilot-cluster-1 --region asia-south1 --project justwravel-production
+          sed -ie "s/THIS_STRING_IS_REPLACED_DURING_BUILD/$(date)/g" resources.yaml
           kubectl apply -f resources.yaml
