@@ -42,11 +42,6 @@ jobs:
         id: get-tag
         run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
-      - name: Get TAG and place to index php
-        run: |
-          sed -ie "s/BUILD_DATE/$(date)/g" index.php
-          sed -ie "s/BUILD_VERSION/${{ env.tag }}/g" index.php
-
       - id: docker-push-tagged
         name: Tag Docker image and push to Google Artifact Registry
         uses: docker/build-push-action@v2
